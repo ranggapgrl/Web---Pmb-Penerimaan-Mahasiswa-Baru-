@@ -1,29 +1,32 @@
-🎓 Universitas Elang Kuasa — Website PMB & Portal Akademik
-Website resmi Penerimaan Mahasiswa Baru (PMB) dan Sistem Informasi Akademik Universitas Elang Kuasa, dibangun menggunakan framework Laravel dengan antarmuka modern berbasis Bootstrap 5 dan FontAwesome.
+# 🎓 Universitas Elang Kuasa — Website PMB & Portal Akademik
 
-🚀 Fitur Utama
-Halaman Beranda (Home): Menampilkan informasi sambutan, hitung mundur gelombang pendaftaran, keunggulan kampus, dan akses cepat.
+Website resmi Penerimaan Mahasiswa Baru (PMB) dan Sistem Informasi Akademik **Universitas Elang Kuasa**, dibangun menggunakan framework **Laravel** dengan antarmuka modern berbasis **Bootstrap 5** dan **FontAwesome**.
 
-Direktori Akademik & Fakultas: Menyajikan informasi mendalam mengenai 5 fakultas dan 21 program studi terakreditasi.
+---
 
-Detail Jurusan Dinamis: Halaman khusus tiap program studi yang memuat deskripsi lengkap, kegiatan mahasiswa, prospek karir, hingga daftar dosen pengajar.
+## 🚀 Fitur Utama
 
-Informasi PMB: Panduan pendaftaran, jalur masuk, rincian biaya perkuliahan transparan, serta program beasiswa.
+- **Halaman Beranda (Home)**: Menampilkan informasi sambutan, hitung mundur gelombang pendaftaran, keunggulan kampus, dan akses cepat.
+- **Direktori Akademik & Fakultas**: Menyajikan informasi mendalam mengenai 5 fakultas dan 21 program studi terakreditasi.
+- **Detail Jurusan Dinamis**: Halaman khusus tiap program studi yang memuat deskripsi lengkap, kegiatan mahasiswa, prospek karir, hingga daftar dosen pengajar.
+- **Informasi PMB**: Panduan pendaftaran, jalur masuk, rincian biaya perkuliahan transparan, serta program beasiswa.
+- **Formulir Pendaftaran Online**: Formulir pendaftaran mahasiswa baru yang terintegrasi penuh dengan database MySQL (`web_pmb`) lengkap dengan sistem validasi data.
+- **Portal Pendukung**: Halaman informasi Karir, Alumni, Berita & Event kampus, serta Login Mahasiswa.
 
-Formulir Pendaftaran Online: Formulir pendaftaran mahasiswa baru yang terintegrasi penuh dengan database MySQL (web_pmb) lengkap dengan sistem validasi data.
+---
 
-Portal Pendukung: Halaman informasi Karir, Alumni, Berita & Event kampus, serta Login Mahasiswa.
+## 🛠️ Tech Stack
 
-🛠️ Tech Stack
-Framework Backend: Laravel (PHP 8.3+)
+- **Framework Backend**: Laravel (PHP 8.3+)
+- **Database**: MySQL (Manajemen via Laragon)
+- **Frontend / UI**: Bootstrap 5.3, Blade Templating Engine
+- **Ikon & Visual**: FontAwesome 6
 
-Database: MySQL (Manajemen via Laragon)
+---
 
-Frontend / UI: Bootstrap 5.3, Blade Templating Engine
+## 📂 Struktur Direktori Utama
 
-Ikon & Visual: FontAwesome 6
-
-📂 Struktur Direktori Utama
+```text
 web-pmb/
 ├── app/
 │   ├── Http/Controllers/
@@ -45,7 +48,7 @@ web-pmb/
 │       ├── jurusan-detail.blade.php    # Halaman detail informatif tiap jurusan
 │       └── pendaftaran.blade.php       # Form pendaftaran mahasiswa baru
 └── routes/
-└── web.php                         # Definisi seluruh rute aplikasi web
+    └── web.php                         # Definisi seluruh rute aplikasi web
 
 ⚙️ Cara Menjalankan Proyek (Local Setup)
 1. Persiapan Awal
@@ -55,17 +58,23 @@ Pastikan komputer kamu sudah terpasang Laragon (atau XAMPP) yang di dalamnya sud
 Buka aplikasi terminal (atau Laragon Terminal) di dalam folder proyek web-pmb kamu, lalu jalankan perintah berikut secara berurutan:
 
 Install dependencies PHP (Composer):
-composer install
 
+Bash
+composer install
 Buat dan salin file konfigurasi .env:
+
+Bash
 copy .env.example .env
 (Atau jika menggunakan sistem macOS/Linux, gunakan perintah cp .env.example .env)
 
 Generate Application Key:
-php artisan key:generate
 
+Bash
+php artisan key:generate
 Konfigurasi Database di file .env:
 Buka file .env menggunakan teks editor (seperti VS Code), lalu pastikan pengaturan database MySQL kamu sesuai dengan ini:
+
+Cuplikan kode
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -75,14 +84,16 @@ DB_PASSWORD=
 (Pastikan database dengan nama web_pmb sudah kamu buat sebelumnya melalui phpMyAdmin / Laragon).
 
 Jalankan Migrasi Database:
+
+Bash
 php artisan migrate
-
 Jalankan Server Lokal Laravel:
-php artisan serve
 
+Bash
+php artisan serve
 Akses Website:
 Buka browser internet kamu (Google Chrome, Edge, dll), lalu ketikkan alamat berikut:
-http://127.0.0.1:8000
+[http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 📄 Lisensi
 Proyek ini bersifat open-source dan dikembangkan untuk keperluan demonstrasi sistem informasi universitas.
