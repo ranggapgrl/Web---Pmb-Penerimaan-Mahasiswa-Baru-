@@ -1,58 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🎓 Universitas Elang Kuasa — Website PMB & Portal Akademik
+Website resmi Penerimaan Mahasiswa Baru (PMB) dan Sistem Informasi Akademik Universitas Elang Kuasa, dibangun menggunakan framework Laravel dengan antarmuka modern berbasis Bootstrap 5 dan FontAwesome.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+🚀 Fitur Utama
+Halaman Beranda (Home): Menampilkan informasi sambutan, hitung mundur gelombang pendaftaran, keunggulan kampus, dan akses cepat.
 
-## About Laravel
+Direktori Akademik & Fakultas: Menyajikan informasi mendalam mengenai 5 fakultas dan 21 program studi terakreditasi.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Detail Jurusan Dinamis: Halaman khusus tiap program studi yang memuat deskripsi lengkap, kegiatan mahasiswa, prospek karir, hingga daftar dosen pengajar.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Informasi PMB: Panduan pendaftaran, jalur masuk, rincian biaya perkuliahan transparan, serta program beasiswa.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Formulir Pendaftaran Online: Formulir pendaftaran mahasiswa baru yang terintegrasi penuh dengan database MySQL (web_pmb) lengkap dengan sistem validasi data.
 
-## Learning Laravel
+Portal Pendukung: Halaman informasi Karir, Alumni, Berita & Event kampus, serta Login Mahasiswa.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+🛠️ Tech Stack
+Framework Backend: Laravel (PHP 8.3+)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Database: MySQL (Manajemen via Laragon)
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Frontend / UI: Bootstrap 5.3, Blade Templating Engine
 
-## Agentic Development
+Ikon & Visual: FontAwesome 6
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+📂 Struktur Direktori Utama
+web-pmb/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── JurusanController.php       # Mengelola data & halaman detail 21 prodi
+│   │   └── PendaftaranController.php   # Mengelola logika form & database PMB
+│   └── Models/
+│       └── Pendaftaran.php             # Model Eloquent untuk data pendaftar
+├── database/
+│   └── migrations/                     # Migrasi tabel database pendaftaran & sesi
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       │   └── app.blade.php           # Master layout (Navbar, Footer, Top-bar)
+│       ├── pages/                      # Halaman statis & informasi pendukung (Karir, Alumni, Biaya, dll)
+│       ├── auth/
+│       │   └── login.blade.php         # Halaman login mahasiswa
+│       ├── home.blade.php              # Halaman beranda utama
+│       ├── akademik.blade.php          # Halaman daftar fakultas & prodi
+│       ├── jurusan-detail.blade.php    # Halaman detail informatif tiap jurusan
+│       └── pendaftaran.blade.php       # Form pendaftaran mahasiswa baru
+└── routes/
+└── web.php                         # Definisi seluruh rute aplikasi web
 
-```bash
-composer require laravel/boost --dev
+⚙️ Cara Menjalankan Proyek (Local Setup)
+1. Persiapan Awal
+Pastikan komputer kamu sudah terpasang Laragon (atau XAMPP) yang di dalamnya sudah mencakup PHP (versi 8.2 ke atas) dan Composer.
 
-php artisan boost:install
-```
+2. Langkah-langkah di Terminal / Command Prompt
+Buka aplikasi terminal (atau Laragon Terminal) di dalam folder proyek web-pmb kamu, lalu jalankan perintah berikut secara berurutan:
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Install dependencies PHP (Composer):
+composer install
 
-## Contributing
+Buat dan salin file konfigurasi .env:
+copy .env.example .env
+(Atau jika menggunakan sistem macOS/Linux, gunakan perintah cp .env.example .env)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Generate Application Key:
+php artisan key:generate
 
-## Code of Conduct
+Konfigurasi Database di file .env:
+Buka file .env menggunakan teks editor (seperti VS Code), lalu pastikan pengaturan database MySQL kamu sesuai dengan ini:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=web_pmb
+DB_USERNAME=root
+DB_PASSWORD=
+(Pastikan database dengan nama web_pmb sudah kamu buat sebelumnya melalui phpMyAdmin / Laragon).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Jalankan Migrasi Database:
+php artisan migrate
 
-## Security Vulnerabilities
+Jalankan Server Lokal Laravel:
+php artisan serve
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Akses Website:
+Buka browser internet kamu (Google Chrome, Edge, dll), lalu ketikkan alamat berikut:
+http://127.0.0.1:8000
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📄 Lisensi
+Proyek ini bersifat open-source dan dikembangkan untuk keperluan demonstrasi sistem informasi universitas.
